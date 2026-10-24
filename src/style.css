@@ -1650,11 +1650,12 @@ body,
 }
 .faq {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 9%;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
 }
 .faq h2 {
   font-size: 40px;
+  text-align: center;
 }
 .faq-item {
   border-bottom: 1px solid #cdd5c5;
