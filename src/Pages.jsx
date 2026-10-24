@@ -133,7 +133,6 @@ export function PageContent({ page }) {
     <div className={`inner-page ${page}-page`}>
       <section className="page-intro">
         <div className="intro-copy" data-reveal>
-          <span className="page-kicker">{info[0]}</span>
           <h1>
             {info[1]}
             <br />
@@ -150,19 +149,12 @@ export function PageContent({ page }) {
           className={`intro-image intro-${page}`}
           role="img"
           aria-label="Lush agricultural landscape"
-        >
-          <span>
-            <Sprout size={18} /> CULTIVATING WHAT COMES NEXT
-          </span>
-        </div>
+        ></div>
       </section>
       {page === 'features' && (
         <div id="page-content">
           <section className="page-section feature-overview section-grid" data-reveal>
             <div>
-              <div className="eyebrow">
-                <span>01</span>Built around your land
-              </div>
               <h2>
                 Less guesswork.
                 <br />
@@ -241,9 +233,8 @@ export function PageContent({ page }) {
                   'Keep moving forward',
                   'Review the field, refine the plan, and prepare for the next stage.',
                 ],
-              ].map(([t, b], i) => (
+              ].map(([t, b]) => (
                 <article key={t}>
-                  <span>0{i + 1}</span>
                   <h3>{t}</h3>
                   <p>{b}</p>
                 </article>
@@ -279,10 +270,6 @@ export function PageContent({ page }) {
               >
                 <div className={`feature-detail-image image-${i}`} role="img" aria-label={t} />
                 <div>
-                  <div className="eyebrow">
-                    <span>0{i + 1}</span>
-                    {t}
-                  </div>
                   <h2>{h}</h2>
                   <p className="body-copy">{b}</p>
                   <p className="feature-scope">{s}</p>
@@ -300,7 +287,6 @@ export function PageContent({ page }) {
         <div id="page-content">
           <section className="story section-grid page-section" data-reveal>
             <div>
-              <span className="page-kicker">OUR PERSPECTIVE</span>
               <h2>
                 A landscape is more
                 <br />
@@ -345,9 +331,8 @@ export function PageContent({ page }) {
                   'Lasting care',
                   'A handover is a new beginning. We plan for the seasons ahead so your landscape can keep evolving.',
                 ],
-              ].map(([t, b], i) => (
+              ].map(([t, b]) => (
                 <article data-reveal key={t}>
-                  <span>0{i + 1}</span>
                   <Sprout size={25} />
                   <h3>{t}</h3>
                   <p>{b}</p>
@@ -358,7 +343,6 @@ export function PageContent({ page }) {
           <section className="page-section section-grid about-method" data-reveal>
             <div className="method-image" role="img" aria-label="A field prepared for growing" />
             <div>
-              <span className="page-kicker">HOW WE WORK</span>
               <h2>
                 Close to the land.
                 <br />
@@ -380,7 +364,6 @@ export function PageContent({ page }) {
         <div id="page-content">
           <section className="page-section service-directory">
             <div className="directory-heading" data-reveal>
-              <span className="page-kicker">FROM FIRST PLANTING TO LASTING CARE</span>
               <p>
                 Choose a service below to explore what goes into a healthier, more considered
                 landscape.
@@ -395,9 +378,6 @@ export function PageContent({ page }) {
                   aria-label={s.title}
                 />
                 <div className="offering-content">
-                  <span className="page-kicker">
-                    0{i + 1} / {s.category.toUpperCase()}
-                  </span>
                   <h2>{s.title}</h2>
                   <h3>{s.caption}</h3>
                   <p>{s.body}</p>
@@ -436,9 +416,8 @@ export function PageContent({ page }) {
                   'Care & evolve',
                   'We help you understand the next steps and prepare for the seasons ahead.',
                 ],
-              ].map(([t, b], i) => (
+              ].map(([t, b]) => (
                 <article key={t}>
-                  <span>0{i + 1}</span>
                   <h3>{t}</h3>
                   <p>{b}</p>
                 </article>
@@ -447,7 +426,6 @@ export function PageContent({ page }) {
           </section>
           <section className="page-section faq" data-reveal>
             <div>
-              <span className="page-kicker">A FEW THINGS TO KNOW</span>
               <h2>Before we get growing.</h2>
             </div>
             <div>
@@ -505,7 +483,6 @@ export function PageContent({ page }) {
                 </button>
               ))}
             </div>
-            <span>CONCEPT COLLECTION / {filter === 'All' ? '04' : '02'} PROJECTS</span>
           </div>
           <div className="portfolio-grid">
             {projects
@@ -537,7 +514,6 @@ export function PageContent({ page }) {
                   <p>{p.lead}</p>
                   {expanded === p.name && (
                     <div className="project-story">
-                      <span className="page-kicker">THE CONCEPT</span>
                       <p>{p.description}</p>
                       <small>{p.scope}</small>
                       <a href="#contact">

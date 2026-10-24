@@ -370,7 +370,7 @@ nav a:first-child {
   width: 44%;
 }
 .section-heading .muted {
-  margin-top: 15px;
+  margin-top: 0;
 }
 .service-cards {
   display: flex;
@@ -3653,6 +3653,7 @@ main:focus {
 /* Background zoom layers must stay inside their own image frame. */
 .project {
   position: relative;
+  justify-content: flex-end;
 }
 .contact-dialog .page-kicker {
   color: #5e6c55;

@@ -3,7 +3,7 @@ import { Testimonials } from './Testimonials';
 import { ContactDialog, CONTACT_EMAIL } from './ContactDialog';
 import { Photo } from './Photo';
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, Menu, X, Sprout } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Menu, X } from 'lucide-react';
 import { usePageMotion } from './usePageMotion';
 import { PageContent } from './Pages.jsx';
 
@@ -14,14 +14,6 @@ const descriptions = [
   'Crafting the perfect garden space for your home. Whether indoor or outdoor, we get it all ready for your greenery needs.',
   'Expert advice for public gardens and city parks.',
 ];
-function Label({ n, children }) {
-  return (
-    <div className="eyebrow">
-      <span>{n}</span>
-      {children}
-    </div>
-  );
-}
 function Button({ children, href = '#contact', light = false, onClick }) {
   return onClick ? (
     <button type="button" className={`button ${light ? 'light' : ''}`} onClick={onClick}>
@@ -128,7 +120,6 @@ export function App({ route = '/' }) {
             </section>
             <section className="about section-grid" id="about">
               <div data-reveal>
-                <Label n="01">About Us</Label>
                 <h2>
                   Built for Better
                   <br />
@@ -183,7 +174,6 @@ export function App({ route = '/' }) {
             <section id="services" className="services-section">
               <div className="section-heading" data-reveal>
                 <div>
-                  <Label n="02">Services</Label>
                   <p className="muted">
                     We design Hachioji Garden as a part of our new
                     <br /> Landscape Design Commitment to the country.
@@ -244,10 +234,9 @@ export function App({ route = '/' }) {
                     'Harvest and Handover',
                     'The season is the beginning of a lasting journey. Stay connected with clear insights and a plan for what comes next.',
                   ],
-                ].map(([title, body], i) => (
+                ].map(([title, body]) => (
                   <article key={title}>
                     <span className="system-dot" />
-                    <small>0{i + 1}</small>
                     <h3>{title}</h3>
                     <p>{body}</p>
                   </article>
@@ -255,13 +244,8 @@ export function App({ route = '/' }) {
               </div>
             </section>
             <section className="care section-grid">
-              <div className="care-photo" data-reveal>
-                <div className="photo-label">
-                  <Sprout size={16} /> FROM THE GROUND UP
-                </div>
-              </div>
+              <div className="care-photo" data-reveal></div>
               <div data-reveal>
-                <Label n="03">Types of Service</Label>
                 <h2>
                   Our teams handle
                   <br />
@@ -296,7 +280,6 @@ export function App({ route = '/' }) {
             <section id="work" className="work">
               <div className="section-heading" data-reveal>
                 <div>
-                  <Label n="04">Work</Label>
                   <p className="muted">
                     We design Hachioji Garden as a part of our new
                     <br /> Landscape Design Commitment to the country.
@@ -311,7 +294,6 @@ export function App({ route = '/' }) {
               <div className="work-grid" data-reveal>
                 {['A greener tomorrow', 'Room for new growth'].map((t, i) => (
                   <a key={t} href="#contact" className={`project project-${i}`}>
-                    <span>0{i + 1} / FIELD STORIES</span>
                     <div>
                       <h3>{t}</h3>
                     </div>
@@ -322,7 +304,6 @@ export function App({ route = '/' }) {
           </>
         )}
         <section id="contact" className="contact dark-panel" data-reveal>
-          <Label n="05">Let’s Grow Together</Label>
           <div className="section-grid">
             <h2>
               Good things start

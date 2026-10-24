@@ -30,7 +30,7 @@ export function startMotion(root, page) {
           duration: 0.9,
           ease: 'power3.out',
         });
-        gsap.from('.hero-intro,.hero-actions,.intro-copy .page-kicker,.intro-bottom', {
+        gsap.from('.hero-intro,.hero-actions,.intro-bottom', {
           y: 9,
           stagger: 0.06,
           duration: 0.75,

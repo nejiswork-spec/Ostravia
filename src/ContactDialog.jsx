@@ -24,7 +24,6 @@ export function ContactDialog({ onClose }) {
           <X />
         </button>
         <Sprout size={30} />
-        <span className="page-kicker">LET’S GROW TOGETHER</span>
         <h2 id="contact-title">
           Tell us about
           <br />
