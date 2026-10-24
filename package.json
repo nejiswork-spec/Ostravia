@@ -1,0 +1,43 @@
+{
+  "name": "ostravia",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && vite build --ssr src/entry-server.jsx --outDir .prerender && node scripts/prepare-release.mjs",
+    "preview": "node scripts/serve.mjs",
+    "lint": "eslint src scripts tests *.js",
+    "format": "prettier --write src scripts tests *.js *.json *.html *.md",
+    "format:check": "prettier --check src scripts tests *.js *.json *.html *.md",
+    "test": "playwright test",
+    "lighthouse": "node scripts/lighthouse.mjs",
+    "check": "npm run lint && npm run build && npm test"
+  },
+  "dependencies": {
+    "@fontsource/dm-sans": "^5.3.0",
+    "gsap": "^3.12.7",
+    "lenis": "^1.2.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@eslint/js": "^9.39.5",
+    "@playwright/test": "^1.64.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.13.0",
+    "lighthouse": "^13.5.0",
+    "prettier": "^3.9.10",
+    "sharp": "^0.35.5",
+    "vite": "^6.1.0",
+    "tailwindcss": "^4.1.0",
+    "@tailwindcss/vite": "^4.1.0"
+  },
+  "private": true,
+  "engines": {
+    "node": "22.x"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "tool": "Built-in image_gen",
+  "prompts": [
+    {
+      "name": "hero",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Wide cinematic landscape photograph of lush rolling agricultural hills, cypress-lined ridges, winding meadow path and distant misty mountains at sunrise. Refined Tuscany landscape, natural believable greens, fine grass detail, pale warm sky. Main sunlit ridges on right, darker foreground left suitable for website text. Extra wide landscape composition. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "garden",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium landscape architecture editorial photograph of a beautifully designed contemporary country garden, winding pale gravel path through lavender, ornamental grasses and layered native green planting, mature olive trees, modest stone house in background. Soft late-afternoon sun, natural green and cream palette, realistic fine plant detail. No people. Landscape composition. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "soil",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium agriculture editorial close-up photograph of two realistic earth-stained hands gently cupping rich dark crumbly living soil with a healthy young green seedling. Crouching farmer wearing olive work clothing, face outside frame, lush garden softly out of focus behind. Natural morning light, tactile organic detail, realistic anatomy, restrained greens and earth tones. Landscape composition. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "field",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium agriculture editorial photograph from elevated drone angle of a single modern tractor moving through long perfectly parallel lush green crop rows, gentle early morning sunlight, subtle atmospheric depth, field fills image, realistic machinery and natural vegetation, rich green and earthy palette. Landscape composition, tractor slightly above center. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "agronomist",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium editorial agriculture photograph of a female agronomist in olive work shirt and cream trousers standing in a thriving crop field, looking down and inspecting leaves gently, authentic candid moment, natural skin texture, realistic hands and anatomy. Warm morning sunlight, distant green hills, restrained forest and sage palette. Landscape composition, medium wide view, no logos. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "harvest",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium editorial agriculture photograph of golden late afternoon sun over a productive vegetable farm, wooden crates of freshly harvested leafy greens and carrots in foreground, long garden beds and rolling green hills behind. Natural warm light, rich greens, realistic organic produce texture, quiet abundant atmosphere. Landscape composition. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    },
+    {
+      "name": "portrait",
+      "prompt": "Use case: photo-real. Website photography asset for Ostravia agriculture and landscape design. Premium editorial headshot photograph of a middle-aged male farmer with short brown hair and lightly weathered face wearing an olive cotton work shirt, warm relaxed expression, softly blurred green farm in background, natural afternoon light, authentic skin texture, tasteful restrained colors. Square portrait, shoulders and head, no text. Cohesive high-end editorial photography. No text, watermark, collage, panels, or borders."
+    }
+  ]
+}

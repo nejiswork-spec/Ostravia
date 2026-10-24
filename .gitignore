@@ -1,0 +1,16 @@
+node_modules/
+dist/
+artifacts/
+test-results/
+playwright-report/
+.env
+.env.*
+!.env.example
+.vercel/
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+.openai/*.local.*
+.prerender/
+.local-archive/

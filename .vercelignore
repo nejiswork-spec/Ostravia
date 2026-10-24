@@ -1,0 +1,14 @@
+.git
+.github
+.openai
+.local-archive
+.prerender
+artifacts
+test-results
+playwright-report
+node_modules
+dist
+docs
+tests
+.env
+.env.*

@@ -1,0 +1,25 @@
+{
+  "tool": "Built-in image_gen",
+  "portraits": [
+    {
+      "name": "sarah",
+      "prompt": "Use case: photo-real. Create a single premium editorial head-and-shoulders profile portrait for an illustrative testimonial on an agriculture and garden website. Woman in her early 40s with shoulder-length brown hair, wearing a sage linen work shirt. Authentic relaxed smile, looking at camera, natural skin texture, softly blurred green garden background, warm natural afternoon light, restrained sage and forest green palette. Centered head fully inside frame with ample space above and around face for square cropping. Photorealistic, square image. No text, no watermark, no borders, no collage."
+    },
+    {
+      "name": "emma",
+      "prompt": "Use case: photo-real. Create a single premium editorial head-and-shoulders profile portrait for an illustrative testimonial on an agriculture and garden website. Woman in her 30s with wavy dark hair, cream linen shirt. Authentic relaxed smile, looking at camera, natural skin texture, softly blurred green garden background, warm natural afternoon light, restrained sage and forest green palette. Centered head fully inside frame with ample space above and around face for square cropping. Photorealistic, square image. No text, no watermark, no borders, no collage."
+    },
+    {
+      "name": "daniel",
+      "prompt": "Use case: photo-real. Create a single premium editorial head-and-shoulders profile portrait for an illustrative testimonial on an agriculture and garden website. Man in his 50s with short salt-and-pepper hair and a trimmed beard, olive cotton shirt. Authentic relaxed smile, looking at camera, natural skin texture, softly blurred green garden background, warm natural afternoon light, restrained sage and forest green palette. Centered head fully inside frame with ample space above and around face for square cropping. Photorealistic, square image. No text, no watermark, no borders, no collage."
+    },
+    {
+      "name": "olivia",
+      "prompt": "Use case: photo-real. Create a single premium editorial head-and-shoulders profile portrait for an illustrative testimonial on an agriculture and garden website. Woman in her late 40s with short blonde hair, pale beige cotton shirt. Authentic relaxed smile, looking at camera, natural skin texture, softly blurred green garden background, warm natural afternoon light, restrained sage and forest green palette. Centered head fully inside frame with ample space above and around face for square cropping. Photorealistic, square image. No text, no watermark, no borders, no collage."
+    },
+    {
+      "name": "james",
+      "prompt": "Use case: photo-real. Create a single premium editorial head-and-shoulders profile portrait for an illustrative testimonial on an agriculture and garden website. Nigerian man in his 40s with close-cropped black hair, dark green work shirt. Authentic relaxed smile, looking at camera, natural skin texture, softly blurred green garden background, warm natural afternoon light, restrained sage and forest green palette. Centered head fully inside frame with ample space above and around face for square cropping. Photorealistic, square image. No text, no watermark, no borders, no collage."
+    }
+  ]
+}
