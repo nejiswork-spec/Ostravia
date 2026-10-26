@@ -61,10 +61,7 @@ export function useAnimatedDialog(onClose) {
     const animation = matchMedia('(prefers-reduced-motion: reduce)').matches
       ? null
       : dialog.animate(
-          [
-            { transform: 'translateY(16px) scale(.985)' },
-            { transform: 'translateY(0) scale(1)' },
-          ],
+          [{ transform: 'translateY(16px) scale(.985)' }, { transform: 'translateY(0) scale(1)' }],
           { duration: 320, easing: 'cubic-bezier(.22,.68,.2,1)' },
         );
     return () => {
