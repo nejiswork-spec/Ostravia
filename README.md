@@ -28,6 +28,8 @@ For browser tests on Linux/macOS, run `npx playwright install chromium`. Windows
 
 For Lighthouse, start `npm run preview` in one terminal, then run `npm run lighthouse` in another. Reports are written to `artifacts/`, which is not committed or published. Lighthouse uses mobile throttling and desktop settings for every route. Its release thresholds are performance ≥90, accessibility 100, best practices ≥95, and SEO 100; results vary with hardware, hosting, and network conditions.
 
+The isolated Linux CI audit browser uses container-compatible sandbox/shared-memory flags. These apply only to the ephemeral testing process visiting localhost; they do not change production headers or visitors' browser security. Set `AUDIT_BASE_URL` to run browser/Lighthouse checks against a public deployment. Optional `LIGHTHOUSE_ROUTES`, `LIGHTHOUSE_MODES`, and `LIGHTHOUSE_OUTPUT_DIR` select a smaller diagnostic run without changing pass thresholds.
+
 ## Deployment
 
 `npm run build` writes minified, pre-rendered HTML and hashed JavaScript/CSS to `dist/`, with Brotli/gzip sidecars and no source maps. It also generates page-specific Open Graph/X cards as 1200×630 JPEGs, PNG favicons, and factual WebPage microdata. Cards use the bundled, licensed Manrope font. `vercel.json` configures Vercel builds, page routes, caching, and security headers. The build uses Vercel's production origin, falling back to `https://ostravia.vercel.app`; set `SITE_URL` when adding an owned domain. Vercel preview builds receive noindex metadata and a disallowing robots.txt. `_headers` and the local production server apply the same security policy on compatible hosting. Do not add an SPA fallback that turns unknown routes into home-page responses.

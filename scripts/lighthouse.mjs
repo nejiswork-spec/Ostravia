@@ -20,7 +20,16 @@ const chrome = await launch({
     (process.platform === 'win32'
       ? 'C:/Program Files/Google/Chrome/Application/chrome.exe'
       : chromium.executablePath()),
-  chromeFlags: ['--headless=new', '--no-first-run', '--no-default-browser-check'],
+  chromeFlags: [
+    '--headless=new',
+    '--no-first-run',
+    '--no-default-browser-check',
+    // The ephemeral Linux CI runner disallows Chromium's user-namespace sandbox.
+    // Only the isolated localhost test browser uses these flags, never the deployed site.
+    ...(process.platform === 'linux' && process.env.CI
+      ? ['--no-sandbox', '--disable-dev-shm-usage']
+      : []),
+  ],
 });
 const summary = [];
 async function measure(url, options) {

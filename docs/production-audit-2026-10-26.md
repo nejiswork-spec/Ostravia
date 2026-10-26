@@ -21,6 +21,7 @@ Technical changes are verified within the coverage below. **Real enquiry launch 
 - Clarified that forms compose email rather than send it. Added autocomplete, length limits, a direct email link, a no-JavaScript email action, and a status message that does not claim successful delivery.
 - Replaced unclear and unsupported placeholder copy, removed the unverified registration symbol and external maker URL, and retained visible illustrative-story/project disclosures.
 - Strengthened release checks for missing assets, unresolved bundler placeholders, social metadata, image dimensions, private files, source maps, and production canonicals. Added release-artifact checks to CI. Lighthouse recording failures are retried and never counted as passing measurements.
+- Corrected Linux CI browser startup after the first remote Lighthouse step failed before loading any page. The compatibility flags apply only to the isolated audit browser; they do not weaken the application's security policy or visitors' browsers.
 
 ## Verification matrix
 
