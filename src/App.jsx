@@ -30,6 +30,7 @@ function Button({ children, href = '#contact', light = false, onClick }) {
 export function App({ route = '/' }) {
   const page = route.replace(/\/+$/, '').slice(1);
   const innerPage = ['features', 'about', 'services', 'projects'].includes(page);
+  const notFound = page !== '' && !innerPage;
   const [contactOpen, setContactOpen] = useState(false);
   const root = useRef();
   const [menu, setMenu] = useState(false);
@@ -37,7 +38,7 @@ export function App({ route = '/' }) {
   const [active, setActive] = useState(2);
   const [detail, setDetail] = useState(null);
   const [sent, setSent] = useState(false);
-  usePageMotion(root, innerPage ? page : '');
+  usePageMotion(root, notFound ? 'page not found' : innerPage ? page : '');
   useEffect(() => {
     const close = (e) => {
       if (e.key === 'Escape' && menu) {
@@ -96,7 +97,33 @@ export function App({ route = '/' }) {
         </div>
       </header>
       <main id="main-content" tabIndex={-1}>
-        {innerPage ? (
+        {notFound ? (
+          <section className="not-found" aria-labelledby="not-found-title">
+            <div className="not-found-content">
+              <p className="not-found-code">404 / PAGE NOT FOUND</p>
+              <h1 id="not-found-title">
+                A little off
+                <br />
+                the beaten path.
+              </h1>
+              <p>The page you’re looking for could not be found. Let’s get you back to growing.</p>
+              <div className="not-found-actions">
+                <Button href="/">Back to home</Button>
+                <a href="/services">
+                  Explore our services <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </div>
+            <div
+              className="not-found-image"
+              role="img"
+              aria-label="A winding path through a lush garden"
+            >
+              <span aria-hidden="true">404</span>
+              <p>Good things start with the ground.</p>
+            </div>
+          </section>
+        ) : innerPage ? (
           <PageContent page={page} />
         ) : (
           <>

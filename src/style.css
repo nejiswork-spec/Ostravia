@@ -1,4 +1,86 @@
 @import 'tailwindcss';
+.not-found {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5vw;
+  padding: 52px 0 70px;
+  align-items: center;
+}
+.not-found-content {
+  padding: 32px 0;
+}
+.not-found-code {
+  color: #356246;
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+}
+.not-found h1 {
+  font-size: clamp(48px, 5.8vw, 88px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -3px;
+  margin-bottom: 28px;
+}
+.not-found-content > p:last-of-type {
+  color: #535e53;
+  max-width: 370px;
+}
+.not-found-actions {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  flex-wrap: wrap;
+  margin-top: 32px;
+}
+.not-found-actions > a:last-child {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+.not-found-image {
+  min-height: 530px;
+  border-radius: 20px;
+  background:
+    linear-gradient(180deg, #10291b22, #10291b99),
+    url('/images/garden-1600.webp') center / cover;
+  color: #f7f8f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+}
+.not-found-image span {
+  font-size: clamp(120px, 16vw, 250px);
+  font-weight: 400;
+  letter-spacing: -12px;
+  line-height: 1;
+}
+.not-found-image p {
+  font-size: 16px;
+}
+@media (max-width: 700px) {
+  .not-found {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 0 40px;
+  }
+  .not-found-content {
+    padding: 24px 8px;
+  }
+  .not-found h1 {
+    letter-spacing: -2px;
+  }
+  .not-found-image {
+    min-height: 300px;
+    padding: 24px;
+  }
+  .not-found-image span {
+    font-size: 140px;
+    letter-spacing: -8px;
+  }
+}
 :root {
   font-family: 'DM Sans', Arial, sans-serif;
   color: #20241f;

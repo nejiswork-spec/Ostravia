@@ -111,7 +111,10 @@ await writeFile(
 );
 await writeFile(
   'dist/404.html',
-  '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Page not found | Ostravia</title><link rel="icon" href="/favicon.svg"></head><body><main><h1>This path is still growing.</h1><p>The page you requested could not be found.</p><a href="/">Return to Ostravia</a></main></body></html>',
+  template
+    .replace(/<title>.*?<\/title>/, '<title>Page not found | Ostravia</title>')
+    .replace('</head>', '<meta name="robots" content="noindex,follow"></head>')
+    .replace('<div id="root"></div>', `<div id="root">${render('/404')}</div>`),
 );
 await writeFile(
   'dist/_headers',
