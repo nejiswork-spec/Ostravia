@@ -62,8 +62,8 @@ export function useAnimatedDialog(onClose) {
       ? null
       : dialog.animate(
           [
-            { opacity: 0, transform: 'translateY(16px) scale(.985)' },
-            { opacity: 1, transform: 'translateY(0) scale(1)' },
+            { transform: 'translateY(16px) scale(.985)' },
+            { transform: 'translateY(0) scale(1)' },
           ],
           { duration: 320, easing: 'cubic-bezier(.22,.68,.2,1)' },
         );
