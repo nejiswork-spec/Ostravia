@@ -13,6 +13,7 @@ const mime = {
   '.woff2': 'font/woff2',
   '.woff': 'font/woff',
   '.png': 'image/png',
+  '.jpg': 'image/jpeg',
   '.xml': 'application/xml',
   '.txt': 'text/plain; charset=utf-8',
   '.json': 'application/json',
@@ -53,7 +54,7 @@ const server = http.createServer(async (req, res) => {
           ? 'public, max-age=31536000, immutable'
           : pathname.startsWith('/fonts/')
             ? 'public, max-age=31536000, immutable'
-            : pathname.startsWith('/images/')
+            : /^\/(images|social)\//.test(pathname)
               ? 'public, max-age=604800'
               : 'no-cache',
     );

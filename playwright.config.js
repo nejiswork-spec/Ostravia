@@ -6,7 +6,7 @@ export default defineConfig({
   retries: 0,
   reporter: [['list'], ['json', { outputFile: 'artifacts/browser-results.json' }]],
   use: {
-    baseURL: 'http://127.0.0.1:4187',
+    baseURL: process.env.AUDIT_BASE_URL || 'http://127.0.0.1:4187',
     launchOptions: {
       executablePath:
         process.env.CHROME_PATH ||
@@ -16,9 +16,11 @@ export default defineConfig({
     },
     trace: 'retain-on-failure',
   },
-  webServer: {
-    command: 'node scripts/serve.mjs',
-    url: 'http://127.0.0.1:4187',
-    reuseExistingServer: true,
-  },
+  webServer: process.env.AUDIT_BASE_URL
+    ? undefined
+    : {
+        command: 'node scripts/serve.mjs',
+        url: 'http://127.0.0.1:4187',
+        reuseExistingServer: true,
+      },
 });

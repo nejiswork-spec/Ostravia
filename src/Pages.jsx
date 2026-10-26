@@ -169,7 +169,7 @@ export function PageContent({ page }) {
                   src="/images/garden-640.webp"
                   loading="lazy"
                   decoding="async"
-                  alt="Sunlit rolling green landscape"
+                  alt="Layered planting and a path through a country garden"
                 />
                 <Photo
                   src="/images/harvest-640.webp"
@@ -443,26 +443,17 @@ export function PageContent({ page }) {
                   'Seasonal care and handover guidance can be included in your project scope. We will discuss the level of support your landscape needs.',
                 ],
               ].map(([q, a], i) => (
-                <div className="faq-item" key={q}>
-                  <button
-                    aria-expanded={expanded === i}
-                    aria-controls={`faq-${i}`}
-                    onClick={() => setExpanded(expanded === i ? null : i)}
-                  >
+                <details className="faq-item" name="growing-faq" key={q}>
+                  <summary>
                     {q}
-                    <span>{expanded === i ? '−' : '+'}</span>
-                  </button>
-                  <div
-                    className="faq-answer"
-                    id={`faq-${i}`}
-                    inert={expanded !== i}
-                    aria-hidden={expanded !== i}
-                  >
+                    <span aria-hidden="true">+</span>
+                  </summary>
+                  <div className="faq-answer" id={`faq-${i}`}>
                     <div>
                       <p>{a}</p>
                     </div>
                   </div>
-                </div>
+                </details>
               ))}
             </div>
           </section>
@@ -496,7 +487,7 @@ export function PageContent({ page }) {
                   <button
                     className={`portfolio-image portfolio-image-${p.image}`}
                     onClick={() => setExpanded(expanded === p.name ? null : p.name)}
-                    aria-label={`Explore ${p.name}`}
+                    aria-label={`${p.type}: explore ${p.name}`}
                     aria-expanded={expanded === p.name}
                   >
                     <span>{p.type}</span>

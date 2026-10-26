@@ -47,16 +47,18 @@ const stories = [
 ];
 export function Testimonials() {
   const [index, setIndex] = useState(0),
-    [interacting, setInteracting] = useState(false),
+    [hovered, setHovered] = useState(false),
+    [focused, setFocused] = useState(false),
+    [autoRotate, setAutoRotate] = useState(true),
     [visible, setVisible] = useState(false),
     [reduced, setReduced] = useState(false);
   const region = useRef(null);
+  const interacting = hovered || focused;
   useEffect(() => {
-    stories.forEach((story) => {
-      const image = new Image();
-      image.src = story.image;
-    });
-  }, []);
+    if (!visible) return;
+    const image = new Image();
+    image.src = stories[(index + 1) % stories.length].image;
+  }, [index, visible]);
   useEffect(() => {
     const preference = matchMedia('(prefers-reduced-motion: reduce)');
     const change = () => setReduced(preference.matches);
@@ -72,12 +74,12 @@ export function Testimonials() {
     };
   }, []);
   useEffect(() => {
-    if (interacting || !visible || reduced) return;
+    if (!autoRotate || interacting || !visible || reduced) return;
     const timer = setInterval(() => {
       if (!document.hidden) setIndex((i) => (i + 1) % stories.length);
     }, 6500);
     return () => clearInterval(timer);
-  }, [interacting, visible, reduced, index]);
+  }, [autoRotate, interacting, visible, reduced, index]);
   const current = stories[index];
   return (
     <section
@@ -86,11 +88,11 @@ export function Testimonials() {
       data-reveal
       aria-label="Illustrative testimonials"
       aria-roledescription="carousel"
-      onMouseEnter={() => setInteracting(true)}
-      onMouseLeave={() => setInteracting(false)}
-      onFocusCapture={() => setInteracting(true)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onFocusCapture={() => setFocused(true)}
       onBlurCapture={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget)) setInteracting(false);
+        if (!e.currentTarget.contains(e.relatedTarget)) setFocused(false);
       }}
     >
       <div className="panel-heading">
@@ -113,6 +115,7 @@ export function Testimonials() {
               width="400"
               height="400"
               decoding="async"
+              loading="lazy"
             />
           </div>
           <div className="quote-controls">
@@ -133,11 +136,15 @@ export function Testimonials() {
             </button>
           </div>
         </div>
-        <blockquote>
+        <blockquote
+          aria-live={autoRotate && !interacting && !reduced ? 'off' : 'polite'}
+          aria-atomic="true"
+        >
           <div
             className="testimonial-slide"
             key={index}
-            aria-live="off"
+            role="group"
+            aria-roledescription="slide"
             aria-label={`Testimonial ${index + 1} of 6`}
           >
             <span className="quote-mark">“</span>
@@ -164,6 +171,15 @@ export function Testimonials() {
           </div>
         </blockquote>
       </div>
+      <label className="carousel-rotation">
+        <input
+          type="checkbox"
+          checked={autoRotate && !reduced}
+          disabled={reduced}
+          onChange={(event) => setAutoRotate(event.target.checked)}
+        />
+        Auto-rotate stories{reduced ? ' (reduced motion is on)' : ''}
+      </label>
     </section>
   );
 }

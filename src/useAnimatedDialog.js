@@ -37,8 +37,26 @@ export function useAnimatedDialog(onClose) {
       event.preventDefault();
       close();
     };
+    const trapFocus = (event) => {
+      if (event.key !== 'Tab') return;
+      const controls = [
+        ...dialog.querySelectorAll('a[href],button,input,select,textarea,[tabindex]'),
+      ].filter(
+        (element) => !element.disabled && element.tabIndex >= 0 && element.getClientRects().length,
+      );
+      const first = controls[0];
+      const last = controls.at(-1);
+      if (
+        (event.shiftKey && document.activeElement === first) ||
+        (!event.shiftKey && document.activeElement === last)
+      ) {
+        event.preventDefault();
+        (event.shiftKey ? last : first)?.focus();
+      }
+    };
     dialog.addEventListener('click', backdrop);
     dialog.addEventListener('cancel', cancel);
+    dialog.addEventListener('keydown', trapFocus);
     dialog.showModal();
     const animation = matchMedia('(prefers-reduced-motion: reduce)').matches
       ? null
@@ -54,6 +72,7 @@ export function useAnimatedDialog(onClose) {
       dialog.close();
       dialog.removeEventListener('click', backdrop);
       dialog.removeEventListener('cancel', cancel);
+      dialog.removeEventListener('keydown', trapFocus);
       document.body.style.overflow = previousOverflow;
       queueMicrotask(() => {
         if (!document.querySelector('dialog[open]')) previousFocus?.focus({ preventScroll: true });

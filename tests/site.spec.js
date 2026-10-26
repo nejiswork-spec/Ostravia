@@ -65,7 +65,7 @@ for (const width of [1280, 375]) {
           .evaluate((el) => Math.round(el.getBoundingClientRect().height)),
       ).toBe(900);
       const axe = await new AxeBuilder({ page })
-        .withTags(['wcag2a', 'wcag2aa', 'wcag21aa', 'best-practice'])
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa', 'best-practice'])
         .analyze();
       expect(
         axe.violations.map((v) => ({
@@ -96,7 +96,7 @@ test('contact dialogs open, trap focus, validate, and close with Escape', async 
   await expect(dialog).toBeVisible();
   const scan = await new AxeBuilder({ page })
     .include('.contact-dialog')
-    .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+    .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
     .analyze();
   expect(scan.violations).toEqual([]);
   await dialog.getByRole('button', { name: 'Compose enquiry' }).click();
@@ -115,15 +115,15 @@ test('contact dialogs open, trap focus, validate, and close with Escape', async 
 });
 test('FAQ opens one answer at a time and supports keyboard use', async ({ page }) => {
   await page.goto('/services');
-  const questions = page.locator('.faq-item button');
+  const questions = page.locator('.faq-item summary');
   await questions.nth(0).click();
-  await expect(questions.nth(0)).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('.faq-item').nth(0)).toHaveAttribute('open', '');
   await questions.nth(1).focus();
   await page.keyboard.press('Enter');
-  await expect(questions.nth(1)).toHaveAttribute('aria-expanded', 'true');
-  await expect(questions.nth(0)).toHaveAttribute('aria-expanded', 'false');
+  await expect(page.locator('.faq-item').nth(1)).toHaveAttribute('open', '');
+  await expect(page.locator('.faq-item').nth(0)).not.toHaveAttribute('open');
   await questions.nth(1).click();
-  await expect(questions.nth(1)).toHaveAttribute('aria-expanded', 'false');
+  await expect(page.locator('.faq-item').nth(1)).not.toHaveAttribute('open');
 });
 test('mobile menu opens and closes without overflow', async ({ page }) => {
   await page.setViewportSize({ width: 375, height: 812 });
@@ -143,7 +143,7 @@ test('project filters and stories work', async ({ page }) => {
   await expect(page.locator('.portfolio-card')).toHaveCount(4);
   await page.getByRole('button', { name: 'Gardens', exact: true }).click();
   await expect(page.locator('.portfolio-card')).toHaveCount(2);
-  await page.getByRole('button', { name: 'Explore concept', exact: true }).first().click();
+  await page.getByRole('button', { name: 'Gardens: explore Hachioji Garden', exact: true }).click();
   await expect(page.locator('.project-story')).toBeVisible();
   await page.getByRole('button', { name: 'All', exact: true }).click();
   await expect(page.locator('.portfolio-card')).toHaveCount(4);
@@ -157,6 +157,7 @@ test('all six testimonials have images and wrap in both directions', async ({ pa
   for (let i = 0; i < 6; i++) {
     names.add(await page.locator('.testimonial-slide b').textContent());
     const img = page.locator('.testimonial-avatar img');
+    await img.scrollIntoViewIfNeeded();
     await expect(img).toBeVisible();
     await expect.poll(() => img.evaluate((el) => el.complete && el.naturalWidth > 0)).toBe(true);
     await next.click();

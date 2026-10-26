@@ -37,6 +37,12 @@ input:focus-visible {
   outline: 2px solid #00a369;
   outline-offset: 5px;
 }
+summary:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #007548;
+  outline-offset: 5px;
+}
 button {
   border: 0;
 }
@@ -54,6 +60,9 @@ h2 {
 }
 h3 {
   font-weight: 400;
+}
+h1 {
+  overflow-wrap: anywhere;
 }
 p {
   line-height: 1.55;
@@ -1401,6 +1410,7 @@ body,
 .hero {
   width: 100%;
   border-radius: 0;
+  background-color: #213426;
 }
 .about,
 .services-section,
@@ -1659,8 +1669,26 @@ body,
 }
 .faq-item {
   border-bottom: 1px solid #cdd5c5;
+  interpolate-size: allow-keywords;
 }
-.faq-item button {
+.faq-item summary {
+  cursor: pointer;
+  list-style: none;
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 480ms var(--motion-ease),
+    content-visibility 480ms allow-discrete;
+}
+.faq-item[open]::details-content {
+  block-size: auto;
+}
+.faq-item summary {
   display: flex;
   width: 100%;
   text-align: left;
@@ -1672,7 +1700,7 @@ body,
   color: #2b4033;
   font-size: 17px;
 }
-.faq-item button > span {
+.faq-item summary > span {
   font-size: 25px;
 }
 .faq-item p {
@@ -2002,7 +2030,7 @@ body,
   .faq h2 {
     font-size: 30px;
   }
-  .faq-item button {
+  .faq-item summary {
     font-size: 15px;
     padding-block: 18px;
   }
@@ -2196,11 +2224,11 @@ body,
 /* Individually composed editorial photography, replacing the old image strip. */
 :root {
   --photo-hero: url('/images/hero-1600.webp');
-  --photo-garden: url('/images/garden-1600.webp');
-  --photo-soil: url('/images/soil-1600.webp');
-  --photo-field: url('/images/field-1600.webp');
-  --photo-agronomist: url('/images/agronomist-1600.webp');
-  --photo-harvest: url('/images/harvest-1600.webp');
+  --photo-garden: url('/images/garden-960.webp');
+  --photo-soil: url('/images/soil-960.webp');
+  --photo-field: url('/images/field-960.webp');
+  --photo-agronomist: url('/images/agronomist-960.webp');
+  --photo-harvest: url('/images/harvest-960.webp');
 }
 .hero {
   background-image: var(--photo-hero);
@@ -2237,20 +2265,31 @@ body,
   background-position: 34% center;
 }
 .update-image.image-0 {
-  background-image: var(--photo-soil);
+  background-image: url('/images/soil-320.webp');
   background-size: cover;
   background-position: 48% center;
 }
 .update-image.image-1 {
-  background-image: var(--photo-agronomist);
+  background-image: url('/images/agronomist-320.webp');
   background-size: cover;
   background-position: 35% center;
 }
 .update-image.image-2 {
-  background-image: var(--photo-harvest);
+  background-image: url('/images/harvest-320.webp');
   background-size: cover;
   background-position: 30% center;
   filter: none;
+}
+@media (min-resolution: 1.5dppx) {
+  .update-image.image-0 {
+    background-image: url('/images/soil-640.webp');
+  }
+  .update-image.image-1 {
+    background-image: url('/images/agronomist-640.webp');
+  }
+  .update-image.image-2 {
+    background-image: url('/images/harvest-640.webp');
+  }
 }
 .care-photo {
   background-image: var(--photo-field);
@@ -2280,17 +2319,17 @@ body,
   background-position: center;
 }
 .intro-image.intro-features {
-  background-image: var(--photo-field);
+  background-image: url('/images/field-1600.webp');
   background-size: cover;
   background-position: center;
 }
 .intro-image.intro-about {
-  background-image: var(--photo-garden);
+  background-image: url('/images/garden-1600.webp');
   background-size: cover;
   background-position: 70% center;
 }
 .intro-image.intro-services {
-  background-image: var(--photo-harvest);
+  background-image: url('/images/harvest-1600.webp');
   background-size: cover;
   background-position: center;
 }
@@ -2559,30 +2598,22 @@ nav.open {
     translate: 0 0;
   }
 }
-/* Accordion panels stay mounted so both opening and closing can interpolate. */
+/* Native details retain keyboard and no-JavaScript support. */
 .faq-answer {
   display: grid;
-  grid-template-rows: 0fr;
-  opacity: 0;
-  transition:
-    grid-template-rows 0.55s var(--motion-ease),
-    opacity 0.35s ease;
+  grid-template-rows: 1fr;
 }
 .faq-answer > div {
   min-height: 0;
   overflow: hidden;
 }
-.faq-answer[aria-hidden='false'] {
-  grid-template-rows: 1fr;
-  opacity: 1;
-}
-.faq-item button {
+.faq-item summary {
   transition: color 0.3s;
 }
-.faq-item button:hover {
+.faq-item summary:hover {
   color: #009d63;
 }
-.faq-item button > span {
+.faq-item summary > span {
   font-size: 0;
   position: relative;
   width: 22px;
@@ -2590,8 +2621,8 @@ nav.open {
   flex-shrink: 0;
   transition: rotate 0.45s var(--motion-ease);
 }
-.faq-item button > span:before,
-.faq-item button > span:after {
+.faq-item summary > span:before,
+.faq-item summary > span:after {
   content: '';
   position: absolute;
   top: 10px;
@@ -2601,14 +2632,14 @@ nav.open {
   background: currentColor;
   border-radius: 2px;
 }
-.faq-item button > span:after {
+.faq-item summary > span:after {
   rotate: 90deg;
   transition: scale 0.35s;
 }
-.faq-item button[aria-expanded='true'] > span {
+.faq-item[open] summary > span {
   rotate: 180deg;
 }
-.faq-item button[aria-expanded='true'] > span:after {
+.faq-item[open] summary > span:after {
   scale: 0 1;
 }
 /* More readable typography throughout the content. */
@@ -2688,7 +2719,7 @@ nav.open {
 .design p {
   font-size: 15px;
 }
-.faq-item button {
+.faq-item summary {
   font-size: 20px;
 }
 .feature-scope {
@@ -2863,7 +2894,7 @@ nav.open {
   .feature-scope {
     font-size: 12px;
   }
-  .faq-item button {
+  .faq-item summary {
     font-size: 18px;
   }
   .portfolio-caption button {
@@ -3599,6 +3630,27 @@ blockquote small {
 }
 .testimonial-dots button {
   min-height: 28px;
+  min-width: 28px;
+}
+.carousel-rotation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  width: fit-content;
+  margin: 24px auto 0;
+  color: #eaf2d0;
+  font-size: 14px;
+  cursor: pointer;
+}
+.carousel-rotation input {
+  width: 20px;
+  height: 20px;
+  accent-color: #eaf2d0;
+}
+.carousel-rotation:has(input:disabled) {
+  cursor: default;
 }
 .contact-dialog .modal-close,
 .detail-dialog .modal-close {
@@ -3613,6 +3665,10 @@ main:focus {
 .email-input input:focus-visible {
   outline: 2px solid #b9de78;
   outline-offset: 4px;
+}
+.contact p a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 @media (max-width: 640px) {
   .quote-controls button {
@@ -3671,6 +3727,7 @@ main:focus {
   place-items: center;
   padding: 80px 5vw;
   text-align: center;
+  min-height: min-content;
 }
 .hero .hero-content,
 .inner-page .intro-copy {
@@ -3793,7 +3850,8 @@ main:focus {
   overflow: visible;
 }
 .hero h1 .line {
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .inner-page .intro-copy h1 {
   line-height: 1;
@@ -3902,7 +3960,7 @@ h3,
   letter-spacing: -0.045em;
 }
 .hero h1 {
-  font-size: clamp(23px, 5.25vw, 92px);
+  font-size: clamp(1.4375rem, 5.25vw, 5.75rem);
 }
 /* Shared easing makes hover, press, expand, and page changes feel related. */
 :root {
@@ -3978,12 +4036,12 @@ h3,
     grid-template-rows 480ms var(--motion-ease),
     opacity 320ms ease;
 }
-.faq-item button {
+.faq-item summary {
   transition:
     color 250ms,
     background 350ms;
 }
-.faq-item button:hover {
+.faq-item summary:hover {
   background: #eaf0e133;
 }
 .contact-dialog[open],

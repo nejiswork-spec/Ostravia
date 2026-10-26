@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#2b4033" />
     <meta
       name="description"
@@ -14,6 +16,27 @@
     <title>Ostravia | Grow More Value</title>
   </head>
   <body>
+    <noscript>
+      <style>
+        header nav {
+          display: flex !important;
+          position: static !important;
+          flex-wrap: wrap;
+          width: 100%;
+          order: 3;
+          padding: 12px !important;
+        }
+        header {
+          height: auto !important;
+          min-height: 66px;
+          flex-wrap: wrap;
+          background: #213426 !important;
+        }
+        .nav-right {
+          display: none !important;
+        }
+      </style>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

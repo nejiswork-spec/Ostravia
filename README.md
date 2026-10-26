@@ -4,7 +4,7 @@ A responsive landscape design and agricultural care website built with React, Vi
 
 ## Development
 
-Use Node.js 22 or newer.
+Use Node.js 22.
 
 ```sh
 npm ci
@@ -19,6 +19,7 @@ No API keys or runtime secrets are required. Do not add secrets to browser code 
 npm run lint
 npm run format:check
 npm run build
+node scripts/release-check.mjs
 npm test
 npm audit
 ```
@@ -29,7 +30,7 @@ For Lighthouse, start `npm run preview` in one terminal, then run `npm run light
 
 ## Deployment
 
-`npm run build` writes minified, pre-rendered HTML and hashed JavaScript/CSS to `dist/`, with Brotli/gzip sidecars and no source maps. `vercel.json` configures Vercel builds, page routes, caching, and security headers. The build uses Vercel's production origin for canonical URLs; set `SITE_URL` to override it when adding an owned domain. `_headers` and the local production server apply the same security policy on compatible hosting.
+`npm run build` writes minified, pre-rendered HTML and hashed JavaScript/CSS to `dist/`, with Brotli/gzip sidecars and no source maps. It also generates page-specific Open Graph/X cards as 1200×630 JPEGs, PNG favicons, and factual WebPage microdata. Cards use the bundled, licensed Manrope font. `vercel.json` configures Vercel builds, page routes, caching, and security headers. The build uses Vercel's production origin, falling back to `https://ostravia.vercel.app`; set `SITE_URL` when adding an owned domain. Vercel preview builds receive noindex metadata and a disallowing robots.txt. `_headers` and the local production server apply the same security policy on compatible hosting. Do not add an SPA fallback that turns unknown routes into home-page responses.
 
 Deploy using `npx vercel --prod` after signing in, or import this GitHub repository in Vercel. Do not expose the source directory as a static web root. `.openai/hosting.json` retains an earlier, unpublished Sites registration and is excluded from Vercel uploads.
 
@@ -44,6 +45,8 @@ GitHub Actions repeats linting, formatting, dependency auditing, production buil
 
 ## Security and accessibility
 
-React escapes rendered text, forms use native validation, email URI values are encoded, external credit links use `rel="noreferrer"`, and dialogs support Escape, focus containment, and focus restoration. Motion respects reduced-motion preferences. The testimonial carousel pauses on hover/focus and supports manual navigation without the pause button requested to be removed.
+React escapes rendered text, forms use native validation, email URI values are encoded, and dialogs support Escape, focus containment, and focus restoration. Motion respects reduced-motion preferences and loads after interaction. Essential page content is pre-rendered; navigation, direct email links, and the native FAQ remain available without JavaScript. Enlarged hero text wraps and can expand beyond the normal full-viewport composition to avoid clipping. The testimonial carousel pauses on hover/focus, supports manual navigation, and has an Auto-rotate stories checkbox to stop rotation without a pause button. Reduced motion disables rotation.
+
+The application includes no analytics, advertising, or tracking cookies. The hosting provider and a visitor's chosen email provider may process connection or enquiry information; business-specific privacy information must be reviewed before accepting real enquiries. No backend, authentication, database, payments, or upload endpoint is included.
 
 Client-side code and public assets are inherently inspectable. Minification and omitted source maps reduce accidental exposure; they cannot prevent reverse engineering. Keep credentials, privileged operations, and proprietary server logic on a separately secured backend.

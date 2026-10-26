@@ -1,0 +1,308 @@
+{
+  "date": "2026-10-26",
+  "type": "Single local production-build Lighthouse samples; simulated mobile throttling and desktop lab profiles; not real-user Core Web Vitals.",
+  "before": [
+    {
+      "route": "/",
+      "mode": "mobile",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 2688.933125,
+        "cls": 0,
+        "tbt": 56
+      }
+    },
+    {
+      "route": "/features",
+      "mode": "mobile",
+      "scores": {
+        "performance": 88,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3621.6425999999997,
+        "cls": 0,
+        "tbt": 133.5
+      }
+    },
+    {
+      "route": "/about",
+      "mode": "mobile",
+      "scores": {
+        "performance": 62,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3123.285,
+        "cls": 0,
+        "tbt": 1701.5000000000002
+      }
+    },
+    {
+      "route": "/services",
+      "mode": "mobile",
+      "scores": {
+        "performance": 81,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3099.9687000000004,
+        "cls": 0,
+        "tbt": 508.0156500000003
+      }
+    },
+    {
+      "route": "/projects",
+      "mode": "mobile",
+      "scores": {
+        "performance": 90,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3333.9458000000004,
+        "cls": 0,
+        "tbt": 113.50000000000023
+      }
+    },
+    {
+      "route": "/",
+      "mode": "desktop",
+      "scores": {
+        "performance": 98,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 1067.6404,
+        "cls": 0,
+        "tbt": 9
+      }
+    },
+    {
+      "route": "/features",
+      "mode": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 1032.6644,
+        "cls": 0,
+        "tbt": 3
+      }
+    },
+    {
+      "route": "/about",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 815.2834,
+        "cls": 0,
+        "tbt": 0
+      }
+    },
+    {
+      "route": "/services",
+      "mode": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 903.634125,
+        "cls": 0,
+        "tbt": 25.873175000000003
+      }
+    },
+    {
+      "route": "/projects",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 799.7743,
+        "cls": 0,
+        "tbt": 0
+      }
+    }
+  ],
+  "after": [
+    {
+      "route": "/",
+      "mode": "mobile",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 2713.443125,
+        "cls": 0,
+        "tbt": 18.5
+      }
+    },
+    {
+      "route": "/features",
+      "mode": "mobile",
+      "scores": {
+        "performance": 91,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3317.4114999999997,
+        "cls": 0,
+        "tbt": 95
+      }
+    },
+    {
+      "route": "/about",
+      "mode": "mobile",
+      "scores": {
+        "performance": 92,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 2868.0577,
+        "cls": 0,
+        "tbt": 196
+      }
+    },
+    {
+      "route": "/services",
+      "mode": "mobile",
+      "scores": {
+        "performance": 93,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 3091.8579,
+        "cls": 0,
+        "tbt": 100
+      }
+    },
+    {
+      "route": "/projects",
+      "mode": "mobile",
+      "scores": {
+        "performance": 96,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 2565.5874999999996,
+        "cls": 0,
+        "tbt": 66
+      }
+    },
+    {
+      "route": "/",
+      "mode": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 879.9313,
+        "cls": 0,
+        "tbt": 14.5
+      }
+    },
+    {
+      "route": "/features",
+      "mode": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 877.1803,
+        "cls": 0,
+        "tbt": 6
+      }
+    },
+    {
+      "route": "/about",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 797.8415,
+        "cls": 0,
+        "tbt": 15
+      }
+    },
+    {
+      "route": "/services",
+      "mode": "desktop",
+      "scores": {
+        "performance": 99,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 834.7936,
+        "cls": 0,
+        "tbt": 3
+      }
+    },
+    {
+      "route": "/projects",
+      "mode": "desktop",
+      "scores": {
+        "performance": 100,
+        "accessibility": 100,
+        "best-practices": 100,
+        "seo": 100
+      },
+      "metrics": {
+        "lcp": 753.652,
+        "cls": 0,
+        "tbt": 0
+      }
+    }
+  ]
+}

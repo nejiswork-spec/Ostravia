@@ -33,17 +33,21 @@ export function App({ route = '/' }) {
   const [contactOpen, setContactOpen] = useState(false);
   const root = useRef();
   const [menu, setMenu] = useState(false);
+  const menuToggle = useRef(null);
   const [active, setActive] = useState(2);
   const [detail, setDetail] = useState(null);
   const [sent, setSent] = useState(false);
   usePageMotion(root, innerPage ? page : '');
   useEffect(() => {
     const close = (e) => {
-      if (e.key === 'Escape') setMenu(false);
+      if (e.key === 'Escape' && menu) {
+        setMenu(false);
+        menuToggle.current?.focus();
+      }
     };
     window.addEventListener('keydown', close);
     return () => window.removeEventListener('keydown', close);
-  }, []);
+  }, [menu]);
   return (
     <div ref={root} className="site-shell">
       <a className="skip-link" href="#main-content">
@@ -51,7 +55,7 @@ export function App({ route = '/' }) {
       </a>
       <header>
         <a className="brand" href="/">
-          Ostravia<span>®</span>
+          Ostravia
         </a>
         <nav id="primary-navigation" aria-label="Main navigation" className={menu ? 'open' : ''}>
           {[
@@ -80,6 +84,7 @@ export function App({ route = '/' }) {
             Reach us
           </Button>
           <button
+            ref={menuToggle}
             className="menu-toggle"
             aria-label="Toggle navigation"
             aria-expanded={menu}
@@ -156,8 +161,13 @@ export function App({ route = '/' }) {
                     <div>
                       <h3>{title}</h3>
                       <p>
-                        The smart in all about growing things, where growers are in tune with the
-                        next moves and clear signals can come.
+                        {
+                          [
+                            'Plan planting around the season, with clear priorities for your soil and crops.',
+                            'Connect observations about soil, water, and plant health to practical next steps.',
+                            'Review crop development and field conditions to prepare for the next stage.',
+                          ][i]
+                        }
                       </p>
                       <button
                         className={`button ${i === 1 ? 'light' : ''}`}
@@ -175,8 +185,7 @@ export function App({ route = '/' }) {
               <div className="section-heading" data-reveal>
                 <div>
                   <p className="muted">
-                    We design Hachioji Garden as a part of our new
-                    <br /> Landscape Design Commitment to the country.
+                    Thoughtful planting, healthy soil, and practical care for gardens and fields.
                   </p>
                 </div>
                 <h2>
@@ -212,8 +221,7 @@ export function App({ route = '/' }) {
                   as One System
                 </h2>
                 <p>
-                  Don’t miss a single moving piece. Check out our upcoming methods to stay updated
-                  on green futures, locations, and opportunities.
+                  Connect assessment, planting, and seasonal care in one clear plan for your land.
                 </p>
               </div>
               <div className="system-grid">
@@ -281,8 +289,8 @@ export function App({ route = '/' }) {
               <div className="section-heading" data-reveal>
                 <div>
                   <p className="muted">
-                    We design Hachioji Garden as a part of our new
-                    <br /> Landscape Design Commitment to the country.
+                    Explore illustrative garden and field concepts shaped around the way land is
+                    used.
                   </p>
                 </div>
                 <h2>
@@ -311,6 +319,9 @@ export function App({ route = '/' }) {
               with the ground.
             </h2>
             <form
+              action={`mailto:${CONTACT_EMAIL}`}
+              method="post"
+              encType="text/plain"
               onSubmit={(e) => {
                 e.preventDefault();
                 window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent('Let’s talk about my land')}&body=${encodeURIComponent('Hello Ostravia,\n\nI would like to discuss a project.\n\nMy email: ' + e.currentTarget.elements.email.value)}`;
@@ -323,31 +334,36 @@ export function App({ route = '/' }) {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
+                  maxLength={254}
                   placeholder="Your email address"
                   required
                   aria-label="Your email address"
                 />
-                <button aria-label="Send enquiry">
+                <button aria-label="Compose enquiry">
                   <ArrowRight />
                 </button>
               </div>
-              <p>
+              <p role="status">
                 {sent
-                  ? 'Your enquiry is ready in your email app. Send it there to get in touch.'
-                  : 'Leave your email and let’s talk about your land.'}
+                  ? 'If your email app opened, review and send your enquiry there. You can also email ' +
+                    CONTACT_EMAIL +
+                    '.'
+                  : 'Opens your email app with an enquiry ready for you to review and send.'}
+              </p>
+              <p>
+                You can also email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> directly.
               </p>
             </form>
           </div>
         </section>
       </main>
       <footer className="site-footer">
-        <div className="brand">
-          Ostravia<span>®</span>
-        </div>
-        <a className="aivora" href="https://aivora.com" target="_blank" rel="noreferrer">
+        <div className="brand">Ostravia</div>
+        <div className="aivora">
           <span>Made by</span>
           <Photo src="/aivora.webp" width={220} height={90} alt="Aivora" />
-        </a>
+        </div>
         <small>© {new Date().getFullYear()} Ostravia</small>
       </footer>
       {contactOpen && <ContactDialog onClose={() => setContactOpen(false)} />}

@@ -51,6 +51,7 @@ export function ContactDialog({ onClose }) {
                 name="email"
                 type="email"
                 autoComplete="email"
+                maxLength={254}
                 placeholder="you@example.com"
                 required
               />
